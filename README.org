@@ -1,0 +1,40 @@
+#+title: Building JOCL for Cashmere
+
+* Introduction
+
+In this document we describe how to build JOCL for [[https://github.com/junglecomputing/cashmere][Cashmere]].  Cashmere uses
+some features of JOCL that have not been released yet.  Hence, we build our own
+version from a fork of [[https://github.com/junglecomputing/JOCL][JOCL]].  The modifications are minor, only changing the
+groupID such that we can publish it on [[https://bintray.com/bintray/jcenter][JCenter]].  This git repository uses
+submodules to obtain the source code for the JOCL forks in the directory
+~JOCLRoot~.
+
+* Checking out the repositories
+
+We can check out the repositories with:
+
+#+begin_src sh
+git submodule init
+git submodule update
+#+end_src
+
+* Building the native code
+
+We build the native code with the following commands:
+
+#+begin_src sh
+mkdir JOCLRoot/JOCL.build
+cd JOCLRoot/JOCL.build
+cmake ../JOCL
+make
+#+end_src
+
+* Building the java files
+
+We can only run the tests if there is a GPU in the machine, otherwise add we
+~-DskipTests~.  
+
+#+begin_src sh
+cd ../JOCL
+mvn clean package -DskipTests
+#+end_src

@@ -1,0 +1,6 @@
+[submodule "JOCLRoot/JOCL"]
+	path = JOCLRoot/JOCL
+	url = https://github.com/junglecomputing/JOCL.git
+[submodule "JOCLRoot/JOCLCommon"]
+	path = JOCLRoot/JOCLCommon
+	url = https://github.com/junglecomputing/JOCLCommon.git
